@@ -1,0 +1,11 @@
+.list-view {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+.list-view__row {
+	display: table-row;
+}
+.list-view__cell {
+	display: table-cell;
+}

@@ -1,0 +1,22 @@
+<div class="list-view">
+	<div class="list-view__row">
+		<div class="list-view__cell" ng-click="list.onSort('name')">Customer</div>
+		<div class="list-view__cell" ng-click="list.onSort('email')">Email</div>
+		<div class="list-view__cell" ng-click="list.onSort('phone')">Phone</div>
+		<div class="list-view__cell" ng-click="list.onSort('department')">Department</div>
+	</div>
+	<div class="list-view__row" ng-repeat="customer in model.customersSource.data track by customer.id">
+		<div class="list-view__cell">
+			<span ng-bind-html="customer.fullName"></span>
+		</div>
+		<div class="list-view__cell">
+			<span ng-bind-html="customer.email"></span>
+		</div>
+		<div class="list-view__cell">
+			<span ng-bind-html="customer.phone"></span>
+		</div>
+		<div class="list-view__cell">
+			<span ng-bind-html="customer.department"></span>
+		</div>
+	</div>
+</div>

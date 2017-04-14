@@ -1,0 +1,34 @@
+.grid-view {
+	overflow: hidden;
+}
+.grid-view__card {
+	float: left;
+	width: 150px;
+	height: 230px;
+	border: solid 1px #ccc;
+	margin: 0 10px 10px 0;
+	text-align: center;
+}
+.grid-view__card h1 {
+	font-size: 12pt;
+	font-weight: bold;
+	margin: 10px 11px;
+}
+.card__avatar img {
+	width: 128px;
+	height: 128px;
+}
+.card__department {
+	margin: 5px 11px;
+}
+.card__department--unmanaged {
+	font-weight: bold;
+}
+.card__phone {
+	margin: 3px 11px;
+}
+.ellipses {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap; 
+}

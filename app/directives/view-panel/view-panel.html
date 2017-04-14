@@ -1,0 +1,9 @@
+<div class="view-panel">
+	<a href="#!/customers/list">List</a>
+	<a href="#!/customers/grid">Grid</a>
+	<a href="#!/customers/group">Group</a>
+	<label>Sort By:</label>
+	<sort-select></sort-select>
+	<input type="text" placeholder="Search" ng-model="data.search.pattern" 
+		   ng-change="ViewPanelCtrl.onSearchChanged()" ng-model-options="{ debounce: 200 }" />
+</div>

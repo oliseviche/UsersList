@@ -1,0 +1,6 @@
+<div>
+	<view-panel></view-panel>
+	<list-view model="data" ng-if="view === 'list'" from="0" limit="100"></list-view>
+	<grid-view model="data" ng-if="view === 'grid'" from="0" limit="100"></grid-view>
+	<group-view model="data" ng-if="view === 'group'"></group-view>
+</div>

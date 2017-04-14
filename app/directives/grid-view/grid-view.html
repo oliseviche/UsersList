@@ -1,0 +1,14 @@
+<div class="grid-view">
+	<div class="grid-view__card" ng-repeat="customer in model.customersSource.data track by $index">
+		<h1 title={{customer.name.first}}&nbsp;{{customer.name.last}} class="ellipses">{{customer.name.first}}&nbsp;{{customer.name.last}}</h1>
+		<section class="card__avatar" title="{{customer.name.first}}&nbsp;{{customer.name.last}}">
+			<img ng-src="{{customer.picture.large}}" />
+		</section>
+		<section class="card__department ellipses" title="{{::customer.department || '&nbsp;'}}" ng-class="{'card__department--unmanaged': 'Unmanaged' === customer.department}">
+			{{customer.department}}
+		</section>
+		<section class="card__phone ellipses" title="{{customer.phone}}">
+			{{customer.phone}}
+		</section>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+.group-view {
+	white-space: nowrap;
+}
+.group {
+	display: inline-block;
+	vertical-align: top;
+	border: solid 1px #ccc;
+	padding: 5px 15px;
+	margin: 0 10px 10px 0;
+}
+.group h1 {
+	font-size: 16pt;
+}
+.group ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.group .group__card {
+	border: solid 1px #ccc;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.group .group__card h1 {
+	font-size: 13pt;
+	margin: 0;
+}
+.group .group__card > div {
+	margin: 3px 0;
+	text-decoration: underline;
+}
