@@ -1,6 +1,62 @@
-.change-view-panel-wrapper {
-	overflow: hidden;
+.view-panel {
+	margin: 10px;
 }
-.change-view-panel {
-	float: left;
+.view-panel.fixed {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 10px;
+	box-shadow:rgba(0,0,0,.1) 0 2px 5px;
+}
+.view-panel .view-panel__views a {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background-color: #fff;
+	font-size: 0px;
+	vertical-align: middle;
+	border:solid 1px #ccc;
+	border-right: none;
+	
+}
+.view-panel .view-panel__views a.view__list {
+	background: no-repeat center/16px url('../img/list.svg'), linear-gradient(#FAFAFA,#E9E9E9);
+}
+.view-panel .view-panel__views a.view__grid {
+	background: no-repeat center/16px url('../img/grid-four-up.svg'), linear-gradient(#FAFAFA,#E9E9E9);
+}
+.view-panel .view-panel__views a.view__group {
+	background: center/16px no-repeat url('../img/spreadsheet.svg'), linear-gradient(#FAFAFA,#E9E9E9);
+}
+.view-panel[data-view='list'] .view-panel__views a.view__list {
+	background: no-repeat center/16px url('../img/list.svg'), linear-gradient(#ccc, #fff);
+}
+.view-panel[data-view='grid'] .view-panel__views a.view__grid {
+	background: no-repeat center/16px url('../img/grid-four-up.svg'), linear-gradient(#ccc, #fff);
+}
+.view-panel[data-view='group'] .view-panel__views a.view__group {
+	background: center/16px no-repeat url('../img/spreadsheet.svg'), linear-gradient(#ccc, #fff);
+}
+.view-panel .view-panel__views a:first-child {
+	border-radius: 5px 0 0 5px;
+}
+.view-panel .view-panel__views a:last-child {
+	border-radius: 0 5px 5px 0;
+	border-right: solid 1px #ccc;
+}
+.view-panel .searcher {
+	padding: 0;
+	margin: 0;
+	line-height: 32px;
+	border: solid 1px #ccc;
+	vertical-align: middle;
+	border-radius: 5px;
+	text-indent: 5px;
+	outline: none;
+	transition: border 0.3s;
+}
+.view-panel .searcher:focus {
+	border: solid 1px rgba(77,150,193, 0.8);
 }

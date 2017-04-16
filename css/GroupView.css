@@ -1,15 +1,18 @@
 .group-view {
 	white-space: nowrap;
+	margin: 10px;
+	font-size: 12pt;
 }
 .group {
 	display: inline-block;
 	vertical-align: top;
-	border: solid 1px #ccc;
 	padding: 5px 15px;
 	margin: 0 10px 10px 0;
+	background-color: #E2E4E6;
+	border-radius: 3px;
 }
 .group h1 {
-	font-size: 16pt;
+	font-size: 12pt;
 }
 .group ul {
 	list-style: none;
@@ -18,12 +21,21 @@
 }
 
 .group .group__card {
-	border: solid 1px #ccc;
 	padding: 5px;
 	margin-bottom: 10px;
+	background-color: #fff;
+	border-radius: 3px;
+	width: 200px;
+	color: #555;
+	box-shadow:rgba(0,0,0,.1) 0 2px 5px;
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+.group .group__card:hover {
+	background-color: rgba(201, 233, 239, 0.3);
 }
 .group .group__card h1 {
-	font-size: 13pt;
+	font-size: 12pt;
 	margin: 0;
 }
 .group .group__card > div {

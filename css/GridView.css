@@ -1,5 +1,6 @@
 .grid-view {
 	overflow: hidden;
+	margin: 10px;
 }
 .grid-view__card {
 	float: left;
@@ -8,6 +9,13 @@
 	border: solid 1px #ccc;
 	margin: 0 10px 10px 0;
 	text-align: center;
+	border-radius: 4px;
+	background-color: #fff;
+	transition: background-color 0.3s;
+	box-shadow:rgba(0,0,0,.1) 0 2px 5px;
+}
+.grid-view__card:hover {
+	background-color: rgba(201, 233, 239, 0.3);
 }
 .grid-view__card h1 {
 	font-size: 12pt;

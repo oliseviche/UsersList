@@ -1,24 +1,29 @@
 .sort-select {
 	border: solid 1px #ccc;
 	display: inline-block;
-	height: 21px;
+	height: 32px;
+	line-height: 32px;
+	border-radius: 5px;
+	background-color: #fff;
+	vertical-align: middle;
+	position: relative;
 }
 .sort-select .sort-select__dir {
 	vertical-align: middle;
 	display: inline-block;
 	width: 0; 
 	height: 0;
-	margin-left: 5px; 
+	margin: 0 0 3px 5px;
 }
 .sort-select .sort-select__dir--up {
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	border-bottom: 11px solid #f0f;
+	border-bottom: 11px solid #000;
 }
 .sort-select .sort-select__dir--down {
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	border-top: 11px solid #f0f;
+	border-top: 11px solid #000;
 }
 .sort-select .sort-select__select {
 	border: none;
@@ -27,4 +32,13 @@
 	position: relative;
 	right: -1px;
 	background-color: transparent;
+	height: 32px;
+	vertical-align: bottom;
+	opacity: 0;
+}
+.sort-select .select-label {
+	position: absolute;
+	top: 0;
+	left: 20px;
+	color: #757575;
 }

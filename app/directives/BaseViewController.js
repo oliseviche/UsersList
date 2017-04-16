@@ -5,6 +5,7 @@ define(['app/sys/Sortings'], function(Sortings) {
 		this.scope = $scope;
 		this.customersSource = this.scope.model.customersSource;
 
+		this.scope.limit = 50;
 		this.scope.model.sort.fields = this.sortingFields;
 
 		if (!this.scope.model.sort.field || !this.scope.model.sort.fields.includes(this.scope.model.sort.field)) {
@@ -36,6 +37,13 @@ define(['app/sys/Sortings'], function(Sortings) {
 	BaseViewController.prototype.dataLoadedHandler = function(sender, data) {
 		this.init();
 		this.scope.$digest();
+	}
+
+	BaseViewController.prototype.showMore = function() {
+		if (this.customersSource.data.length > this.scope.limit) {
+			this.scope.limit += 50;
+		}
+		console.log(this.scope.limit)
 	}
 
 	Object.defineProperty(BaseViewController.prototype, 'sortingFields', {

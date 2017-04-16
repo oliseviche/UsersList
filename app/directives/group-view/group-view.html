@@ -1,12 +1,14 @@
 <div class="group-view">
-	<div class="group" ng-repeat="group in groups track by $index">
-		<h1>{{group.name}}</h1>
+	<div class="group" ng-repeat="group in groups track by group.name">
+		<h1 ng-bind-html="group.name"></h1>
 		<ul>
-			<li ng-repeat="model in group.members track by $index">
+			<li ng-repeat="customer in group.members track by customer.id">
 				<div class="group__card">
-					<h1>{{model.name.first}}&nbsp;{{model.name.last}}</h1>
-					<div><a href="mailto:{{model.email}}">{{model.email}}</a></div>
-					<div>{{model.phone}}</div>
+					<h1 ng-bind-html="customer.fullName"></h1>
+					<div>
+						<a href="mailto:{{customer.email}}" ng-bind-html="customer.email"></a>
+					</div>
+					<div ng-bind-html="customer.phone"></div>
 				</div>
 			</li>
 		</ul>

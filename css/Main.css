@@ -1,13 +1,31 @@
 body {
 	margin: 0;
 	padding: 0;
+	background-color: #f4f4f4;
 }
 
-.menu a.selected {
-	font-weight: 600;
+.menu {
+	padding: 5px;
+	background-color: #026aa7;
+}
+.menu a {
+	display: inline-block;
+	margin: 0px 2px;
+	padding: 5px 10px;
+	color: #fff;
+	border-radius: 2px;
+	background-color: rgba(77,150,193, 0.8);
+	text-decoration: none;
+}
+.menu a:hover {
+	background-color: rgba(77,150,193, 1);
 }
 
 i {
 	font-style: normal;
-	background-color: #acacac;
+	background-color: #ff9632;
+}
+
+a {
+	color: #026aa7;
 }

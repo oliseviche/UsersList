@@ -1,0 +1,6 @@
+html[dir="rtl"] .component button {
+	float: left;
+}
+html[dir="rtl"] .component .input-wrapper {
+	padding-left: 15px;
+}

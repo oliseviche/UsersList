@@ -1,14 +1,13 @@
 <div class="grid-view">
-	<div class="grid-view__card" ng-repeat="customer in model.customersSource.data track by $index">
-		<h1 title={{customer.name.first}}&nbsp;{{customer.name.last}} class="ellipses">{{customer.name.first}}&nbsp;{{customer.name.last}}</h1>
-		<section class="card__avatar" title="{{customer.name.first}}&nbsp;{{customer.name.last}}">
+	<div class="grid-view__card" ng-repeat="customer in model.customersSource.data | limitTo:limit track by customer.id">
+		<h1 title="{{customer.fullName}}" class="ellipses" ng-bind-html="customer.fullName"></h1>
+		<section class="card__avatar" title="{{customer.fullName}}">
 			<img ng-src="{{customer.picture.large}}" />
 		</section>
-		<section class="card__department ellipses" title="{{::customer.department || '&nbsp;'}}" ng-class="{'card__department--unmanaged': 'Unmanaged' === customer.department}">
-			{{customer.department}}
+		<section class="card__department ellipses" title="{{customer.department}}"
+				 ng-bind-html="customer.department"
+				 ng-class="{'card__department--unmanaged': 'Unmanaged' === customer.department}">
 		</section>
-		<section class="card__phone ellipses" title="{{customer.phone}}">
-			{{customer.phone}}
-		</section>
+		<section class="card__phone ellipses" title="{{customer.phone}}" ng-bind-html="customer.phone"></section>
 	</div>
 </div>
