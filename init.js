@@ -3,7 +3,7 @@ requirejs.config({
 	paths: { 
 		'angular': 'angular.min',
 		'angular-route': 'angular-route.min',
-		'app': '/app'
+		'app': '../app'
 	},
 	shim: {
 		'angular-route': {
@@ -12,4 +12,4 @@ requirejs.config({
 	}
 });
 
-requirejs(['/app/boot']); 
+requirejs(['app/boot']); 
