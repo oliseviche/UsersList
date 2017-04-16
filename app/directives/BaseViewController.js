@@ -43,7 +43,6 @@ define(['app/sys/Sortings'], function(Sortings) {
 		if (this.customersSource.data.length > this.scope.limit) {
 			this.scope.limit += 50;
 		}
-		console.log(this.scope.limit)
 	}
 
 	Object.defineProperty(BaseViewController.prototype, 'sortingFields', {
