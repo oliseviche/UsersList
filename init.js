@@ -12,4 +12,4 @@ requirejs.config({
 	}
 });
 
-requirejs(['app/boot']); 
+requirejs(['/app/boot']); 
