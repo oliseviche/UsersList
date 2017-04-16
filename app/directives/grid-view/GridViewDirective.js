@@ -4,7 +4,7 @@ define(['./GridViewController', 'app/sys/utils'], function(controller, utils) {
 	return function gridView() {
 		return {
 			restrict: 'E',
-			templateUrl: '/app/directives/grid-view/grid-view.html',
+			templateUrl: './app/directives/grid-view/grid-view.html',
 			controller: controller,
 			controllerAs: 'grid',
 			replace: true,

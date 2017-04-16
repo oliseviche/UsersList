@@ -4,7 +4,7 @@ define(['./ListViewController', 'app/sys/utils'], function(controller, utils) {
 	return function listView() {
 		return {
 			restrict: 'E',
-			templateUrl: '/app/directives/list-view/list-view.html',
+			templateUrl: './app/directives/list-view/list-view.html',
 			controller: controller,
 			controllerAs: 'list',
 			replace: true,
