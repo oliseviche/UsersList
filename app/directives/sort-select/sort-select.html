@@ -1,6 +1,8 @@
 <label class="sort-select">
 	<span ng-click="sortSelect.changeDir()" class="sort-select__dir" 
-		   ng-class="{'sort-select__dir--up': data.sort.dir > 0, 'sort-select__dir--down': data.sort.dir < 0}"></span>
-	<span class="select-label">{{data.sort.field.name}}</span>
-	<select class="sort-select__select" ng-options="field.name for field in data.sort.fields" ng-model="data.sort.field" ng-change="sortSelect.changeField()"></select>
+		   ng-class="{'sort-select__dir--up': direction === '+', 'sort-select__dir--down': direction === '-'}"></span>
+	<span class="select-label">{{sortField}}</span>
+	<select class="sort-select__select" ng-model="sortField">
+		<option value="Name">Name</option>
+	</select>
 </label>

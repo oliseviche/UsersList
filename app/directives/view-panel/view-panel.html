@@ -1,9 +1,7 @@
 <div class="view-panel">
-	<span class="view-panel__views">
-		<a class="view__list" href="#!/customers/list">List</a><a class="view__grid" href="#!/customers/grid">Grid</a><a class="view__group" href="#!/customers/group">Group</a>
-	</span>
-	<label>Sort By:</label>
+	<label>Sort:</label>
 	<sort-select></sort-select>
-	<input class="searcher" type="text" placeholder="Search" ng-model="data.search.pattern" 
-		   ng-change="ViewPanelCtrl.onSearchChanged()" ng-model-options="{ debounce: 200 }" />
+	<label>Filter:</label>
+	<input class="searcher" type="text" placeholder="Name or t[ype]:Type" ng-model="filter" 
+		   ng-model-options="{ debounce: 200 }" />
 </div>

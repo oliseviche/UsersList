@@ -9,6 +9,7 @@
 	margin: 0;
 	padding: 10px;
 	box-shadow:rgba(0,0,0,.1) 0 2px 5px;
+	z-index: 90210;
 }
 .view-panel .view-panel__views a {
 	display: inline-block;

@@ -5,7 +5,6 @@
 .grid-view__card {
 	float: left;
 	width: 150px;
-	height: 230px;
 	border: solid 1px #ccc;
 	margin: 0 10px 10px 0;
 	text-align: center;
@@ -34,6 +33,27 @@
 }
 .card__phone {
 	margin: 3px 11px;
+}
+.card__access-rights {
+	position: relative;
+	color: #1940a1;
+}
+.card__access-rights ul {
+	position: absolute;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	left: 5px;
+	overflow: auto;
+	height: 0;
+	bottom: 0;
+	left: 2px;
+	right: 2px;
+}
+.card__access-rights:hover ul {
+	height: auto;
+	box-shadow: 0 0 2px #00f;
 }
 .ellipses {
 	text-overflow: ellipsis;

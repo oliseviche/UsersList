@@ -1,0 +1,13 @@
+<div>
+    <h1 title="{{model.name}}" class="ellipses" ng-bind-html="model.name"></h1>
+    <section class="card__avatar" title="{{model.name}}">
+        <img ng-src="{{model.picture}}" />
+    </section>
+    <section class="card__phone ellipses">Managers</section>
+    <section ng-show="model.rights.length > 0" class="card__access-rights">
+        <span>Access Rights</span>
+        <ul>
+            <li ng-repeat="right in model.rights track by $index">{{right}}</li>
+        </ul>
+    </section>
+</div>

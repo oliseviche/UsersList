@@ -1,6 +1,6 @@
 'use strict'
 
-define(['./GridViewController', 'app/sys/utils'], function(controller, utils) {
+define(['./GridViewController'], function(controller) {
 	return function gridView() {
 		return {
 			restrict: 'E',
@@ -9,12 +9,11 @@ define(['./GridViewController', 'app/sys/utils'], function(controller, utils) {
 			controllerAs: 'grid',
 			replace: true,
 			scope: {
-				model: '=',
+				users: '=',
 				from: '<',
-				limit: '<'
-			},
-			link: function($scope, $element, $attr, $ctrl) {
-				utils.initInfiniteScrolling($scope, () => $ctrl.showMore())
+				limit: '<',
+				filterWith: '<',
+				direction: '<'
 			}
 		};
 	};

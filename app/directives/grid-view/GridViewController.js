@@ -1,23 +1,35 @@
 'use strict'
 
-define(['../BaseViewController', 'app/sys/Sortings'], function(BaseViewController, Sortings) {
-	function GridViewController($scope) {
-		BaseViewController.call(this, $scope);
+define(function() {
+	function GridViewController($scope, usersService) {
+		this.$scope = $scope;
+		this.$scope.filter = this.filterMethod.bind(this);
+		this.usersService = usersService;
 	}
+	GridViewController.prototype.filterMethod = function(value) {
+		let filterValue = this.$scope.filterWith;
 
-	GridViewController.prototype = Object.create(BaseViewController.prototype);
-
-	GridViewController.prototype.init = function() {
-		this.customersSource.sort(this.scope.model.sort);
-	}
-
-	Object.defineProperty(GridViewController.prototype, 'sortingFields', {
-		get: function() {
-			return [Sortings.fields[0], Sortings.fields[2], Sortings.fields[3]];
+		if (filterValue.startsWith('t:') || filterValue.startsWith('type:')) {
+			filterValue = filterValue.substr(filterValue.indexOf(':')+1);
+			console.log(filterValue);
+			return value.type.startsWith(filterValue);
 		}
-	});
-
-	GridViewController.$inject = ['$scope'];
+		
+		return value.name.startsWith(filterValue);
+	}
+	GridViewController.prototype.handleClick = function($event) {
+		let target = $event.target;
+		if (target.tagName.toLowerCase() === 'a' &&
+			target.dataset['cmd'] === 'delete' &&
+			target.dataset['id'] !== '') {
+				$event.preventDefault();
+				let result = window.confirm("Do you realle want to delete user?");
+				if (true) {
+					this.usersService.delete(target.dataset['id']);
+				}
+			}
+	}
+	GridViewController.$inject = ['$scope', 'users'];
 	
 	return GridViewController;
 })

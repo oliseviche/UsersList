@@ -1,0 +1,18 @@
+<form name="form" novalidate class="css-form">
+    <div class="field">
+        <label>Name</label><br/>
+        <input type="text" ng-model="slaveModel.name" required />
+    </div>
+    <div class="field">
+        <label>Date Of Birth</label><br/>
+        <input type="date" ng-model="slaveModel.dob" required />
+    </div>
+    <div class="field">
+        <label>Email</label><br/>
+        <input type="email" ng-model="slaveModel.email" required />
+    </div>
+    <div>
+        <button ng-click="userEditor.submit(form);">Submit</button>
+        <a href="#!/">Cancel</a>
+    </div>
+</form>

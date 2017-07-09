@@ -1,6 +1,6 @@
 'use strict'
 
-define(['./MainController', './CustomersController', './HomeController'], function() {
+define(['./MainController', './UsersController', './EditorController'], function() {
 	let controllers = [...arguments];
 	
 	return controllers.reduce((collection, controller) => {

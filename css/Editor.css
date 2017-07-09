@@ -1,0 +1,32 @@
+.css-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px #ccc;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 14pt;
+    font-family: tahoma;
+}
+.css-form .field {
+    margin: 0 0 15px 0;
+} 
+.css-form .field label {
+    font-weight: bold;
+    font-size: 12pt;
+    color: rgba(0,0,0, 0.5);
+}
+.css-form input {
+    border: solid 1px #ccc;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: tahoma;
+}
+.css-form input.ng-invalid {
+    background-color: rgba(255,0,0, 0.5);
+}

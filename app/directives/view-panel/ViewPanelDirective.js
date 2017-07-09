@@ -8,6 +8,10 @@ define(['./ViewPanelController'], function(controller) {
 			controller: controller,
 			controllerAs: 'ViewPanelCtrl',
 			replace: true,
+			scope: {
+				filter: "=",
+				direction: "="
+			},
 			link: function($scope, $element) {
 				//Да, я в курсе, что так делать как минимум не стоит, т.к. стреляется
 				//онскролл часто и грузит процессор. Но это же демка, да и дебаунс

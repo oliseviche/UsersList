@@ -1,16 +1,11 @@
 'use strict'
 
 define(function() {
-	function ViewPanelController($scope, $routeParams, $element) {
-		this.scope = $scope;
-		$element.attr('data-view', $routeParams.viewId);
-	}
-
-	ViewPanelController.prototype.onSearchChanged = function() {
-		this.scope.data.customersSource.search(this.scope.data.search);
+	function ViewPanelController($scope) {
+		this.scope = $scope
 	}
 	
-	ViewPanelController.$inject = ['$scope', '$routeParams', '$element'];
+	ViewPanelController.$inject = ['$scope'];
 
 	return ViewPanelController;
 })

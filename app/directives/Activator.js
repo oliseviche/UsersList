@@ -1,12 +1,12 @@
 'use strict'
 
 const directivePaths = [
-	'./nav-menu/NavMenuDirective',
-	'./view-panel/ViewPanelDirective', 
-	'./list-view/ListViewDirective', 
-	'./grid-view/GridViewDirective', 
-	'./group-view/GroupViewDirective', 
-	'./sort-select/SortSelectDirective'
+	'./view-panel/ViewPanelDirective',
+	'./grid-view/GridViewDirective',
+	'./sort-select/SortSelectDirective',
+	'./user/user-directive',
+	'./manager/manager-directive',
+	'./user-editor/user-editor-directive'
 ];
 
 define(directivePaths, function() {

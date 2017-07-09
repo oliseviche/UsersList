@@ -1,118 +1,33 @@
 'use strict'
 
-define(['../sys/Signal.js', 'app/dpa/Sorts', 'app/dpa/TextSearch'], function(Signal, Sorts, TextSearch) {
-	const DEPARTMENTS = ['Developers', 'Managers', 'PR', 'Analytics', 'Unmanaged'];
+define(['../dto/manager', '../dto/user'], function(Manager, User) {
 	const ZONES = ['com', 'net', 'ru', 'de'];
+	const TYPE = ['User', 'Manager'];
+	const ACCESS_RIGHTS = ['low', 'middle', 'hi'];
 
 	class DataSource {
 		constructor(url) {
-			this._url = url;
-			this._originalData = [];
-			this._originalSort = {};
+			this.url = url;
 			this._data = null;
-			this._sort = null;
-			this.onDataLoaded = new Signal();
-			this.onBeforeSort = new Signal();
-			this.onDataSorted = new Signal();
-			this.onDataSearched = new Signal();
-			this.onError = new Signal();
 		}
 
-		get url() {
-			return this._url || '';
-		}
+		getAccessRights() {
+			let count = (Math.random() * ACCESS_RIGHTS.length + 1) | 0;
+			let ar_copy = [...ACCESS_RIGHTS];
+			let result = [];
 
-		set url(value) {
-			this._url = value;
-		}
-
-		get data() {
-			return this._data;
-		}
-
-		get isDataReady() {
-			return this._data !== null;
-		}
-
-		get sort() {
-			this._sort;
-		}
-
-		sort(sortParams) {
-			let beforeSortEvent = {cancel: false};
-			this.onBeforeSort.dispatch(this, beforeSortEvent);
-
-			if (beforeSortEvent.cancel) {
-				return;
+			for (let i=0; i < count; i++) {
+				let index = (Math.random() * count - i) | 0;
+				let right = ar_copy.splice(index, 1);
+				ar_copy.push(right[0]);
+				result.push(right[0]);
 			}
 
-			this._sort = sortParams;
-
-			let dir = this._sort.dir;
-			let getValue = this._sort.field.getValue;
-			let comparer = this._sort.field.comparer;
-			
-			//Мердж стабилен и вообще, браузеры по умолчанию юзают в основном его.
-			//Можно было бы QuickSort наверное, но пришлось бы на стабильность
-			//заморачиваться.
-			this._data = Sorts.mergeSort(this._data, (a, b) => {
-				let aVal = getValue(a);
-				let bVal = getValue(b);
-				return comparer(aVal, bVal) * dir;
-			});
-			
-			this.onDataSorted.dispatch(this, this.data);
-		}
-
-		preserveOriginalData() {
-			if (!this._originalData.length) {
-				this._originalData = this._data.slice();
-			}
-		}
-
-		restoreOriginalData() {
-			this._data = this._originalData;
-		}
-
-		search(search) {
-			if (search.pattern) {
-				this.preserveOriginalData();
-
-				let searcher = new TextSearch.KnutMorrisPratt(search.pattern);
-				let fields = search.fields;
-
-				this._data = this._originalData.reduce((filtered, customer) => {
-					let values = fields(customer);
-					
-					let indexis = values.reduce((container, value) => {
-						let index = searcher.search(value[0]);
-						if (index >= 0) {
-							container.push([index, value[0], value[1]]);
-						}
-						return container;
-					}, []);
-					
-					if (indexis.length) {
-						let copy = angular.copy(customer);
-						filtered.push(copy);
-
-						indexis.forEach(result => {
-							let modified =  result[1].slice(0, result[0]) + '<i>'+search.pattern+'</i>' + result[1].slice(result[0] + search.pattern.length);
-							result[2](copy, modified);
-						});
-					}
-
-					return filtered;
-				}, []);
-			} else {
-				this.restoreOriginalData();
-			}
-
-			this.onDataSearched.dispatch(this, this.data);
+			return result;
 		}
 
 		fetch() {
-			fetch(this.url).then(response => {
+			return fetch(this.url).then(response => {
 				if (response.status === 200) {
 					let contentType = response.headers.get('content-type');
 					if (contentType.startsWith('application/json')) {
@@ -123,21 +38,21 @@ define(['../sys/Signal.js', 'app/dpa/Sorts', 'app/dpa/TextSearch'], function(Sig
 			})
 			.then((data) => {
 				let idx = 0;
-				this._data = data.results.map((customer) => {
-					let index = Math.random() * DEPARTMENTS.length;
-					customer.department = DEPARTMENTS[index | 0];
-					customer.fullName = `${customer.name.first} ${customer.name.last}`;
-					index = Math.random() * ZONES.length
-					customer.email = `${customer.name.first}@${customer.department.toLowerCase()}.${ZONES[index | 0]}`;
-					customer.id = idx++;
-					return customer;
+				this._data = data.results.map((user) => {
+					if (Math.random() > 0.5) {
+						return new User(`${user.name.first} ${user.name.last}`, user.dob, user.email, user.picture.large);
+					} else {
+						return new Manager(`${user.name.first} ${user.name.last}`, user.picture.large, this.getAccessRights());
+					}
 				});
-				this.onDataLoaded.dispatch(this, this.data);
-			}) 
-			.catch((error) => {
-				this._data = null;
-				this.onError.dispatch(this, error);
+				return this._data;
 			});
+		}
+		delete(id) {
+			angular.copy(this._data.filter((entity) => entity.id != id), this._data);
+		}
+		find(id) {
+			return this._data.filter((entity) => entity.id == id)[0];
 		}
 	}
 
