@@ -1,12 +1,5 @@
 Developed with: RequireJS, AngularJS.
 Uses node http-server package as a static content delivery.
-Simply clone, run 'npm intsall' and after 'http-server'.
+Simply clone, run 'npm intsall' and after 'npm start'.
 
-Uses some ES5 - ES6 features, so won't run on old browsers. Checked under MS Edge 38, FF 52.02 and Chrome 57.
-
-For Russian reviewers:
-Не знаю, что конректно хотели видеть под условием "Обратить внимание на производительность для операций поиска и сортировки", поэтому выбрал реализацию самостоятельно.
-Для сортировки используется стандартный MergeSort, т.к. это самый отпимальный и простой в реализации вариант для стабильной сортировки и совокупности разнородных данных.
-
-Для поиска использовался алгоритм Кнута-Мориса-Пратта, т.к. использовал поиск подстроки, а не префиксное/суффиксное совпадение. На 400 элементах производительность меня
-устраивает. На 1К элементов поиск и сортировка также ведут себя приемлимо, проседать начинает уже Angular.
+Uses some ES5 - ES6 features, so won't run on old browsers. Checked under Chrome 57.

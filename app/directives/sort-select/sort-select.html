@@ -1,8 +1,5 @@
-<label class="sort-select">
-	<span ng-click="sortSelect.changeDir()" class="sort-select__dir" 
+<label class="sort-select" ng-click="sortSelect.changeDir()">
+	<span class="sort-select__dir" 
 		   ng-class="{'sort-select__dir--up': direction === '+', 'sort-select__dir--down': direction === '-'}"></span>
-	<span class="select-label">{{sortField}}</span>
-	<select class="sort-select__select" ng-model="sortField">
-		<option value="Name">Name</option>
-	</select>
+	<span class="sort-select__select">Name<span>
 </label>

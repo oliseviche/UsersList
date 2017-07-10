@@ -64,6 +64,7 @@
 	bottom: 0;
 	left: 2px;
 	right: 2px;
+	max-height: 150px;
 }
 .card__access-rights:hover ul {
 	height: auto;

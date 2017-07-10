@@ -7,6 +7,8 @@
 	background-color: #fff;
 	vertical-align: middle;
 	position: relative;
+	padding: 0 8px 0 0;
+	cursor: pointer;
 }
 .sort-select .sort-select__dir {
 	vertical-align: middle;
@@ -26,14 +28,7 @@
 	border-top: 11px solid #000;
 }
 .sort-select .sort-select__select {
-	border: none;
-	outline: none;
-	vertical-align: middle;
-	right: -1px;
-	background-color: transparent;
 	height: 32px;
-	vertical-align: bottom;
-	opacity: 0;
 }
 .sort-select .select-label {
 	position: absolute;
