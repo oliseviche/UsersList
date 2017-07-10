@@ -1,9 +1,10 @@
 'use strict'
 
 define(function() {
-	function GridViewController($scope, usersService) {
+	function GridViewController($scope, $location, usersService) {
 		this.$scope = $scope;
 		this.$scope.filter = this.filterMethod.bind(this);
+		this.location = $location;
 		this.usersService = usersService;
 	}
 	GridViewController.prototype.filterMethod = function(value) {
@@ -11,7 +12,6 @@ define(function() {
 
 		if (filterValue.startsWith('t:') || filterValue.startsWith('type:')) {
 			filterValue = filterValue.substr(filterValue.indexOf(':')+1);
-			console.log(filterValue);
 			return value.type.startsWith(filterValue);
 		}
 		
@@ -23,13 +23,17 @@ define(function() {
 			target.dataset['cmd'] === 'delete' &&
 			target.dataset['id'] !== '') {
 				$event.preventDefault();
-				let result = window.confirm("Do you realle want to delete user?");
-				if (true) {
+				let result = window.confirm("Do you really want to delete user?");
+				if (result) {
 					this.usersService.delete(target.dataset['id']);
 				}
 			}
 	}
-	GridViewController.$inject = ['$scope', 'users'];
+	GridViewController.prototype.createUser = function() {
+		this.location.path('/user/create');
+	}
+
+	GridViewController.$inject = ['$scope', '$location', 'users'];
 	
 	return GridViewController;
 })

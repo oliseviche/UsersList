@@ -1,9 +1,8 @@
 'use strict'
 
-define(['../dto/manager', '../dto/user'], function(Manager, User) {
+define(['../dto/manager', '../dto/user', 'app/ddo/rights'], function(Manager, User, accessRights) {
 	const ZONES = ['com', 'net', 'ru', 'de'];
 	const TYPE = ['User', 'Manager'];
-	const ACCESS_RIGHTS = ['low', 'middle', 'hi'];
 
 	class DataSource {
 		constructor(url) {
@@ -12,12 +11,12 @@ define(['../dto/manager', '../dto/user'], function(Manager, User) {
 		}
 
 		getAccessRights() {
-			let count = (Math.random() * ACCESS_RIGHTS.length + 1) | 0;
-			let ar_copy = [...ACCESS_RIGHTS];
+			let count = (Math.random() * accessRights.length + 1) | 0;
+			let ar_copy = [...accessRights];
 			let result = [];
 
 			for (let i=0; i < count; i++) {
-				let index = (Math.random() * count - i) | 0;
+				let index = (Math.random() * (count - i)) | 0;
 				let right = ar_copy.splice(index, 1);
 				ar_copy.push(right[0]);
 				result.push(right[0]);
@@ -40,7 +39,7 @@ define(['../dto/manager', '../dto/user'], function(Manager, User) {
 				let idx = 0;
 				this._data = data.results.map((user) => {
 					if (Math.random() > 0.5) {
-						return new User(`${user.name.first} ${user.name.last}`, user.dob, user.email, user.picture.large);
+						return new User(`${user.name.first} ${user.name.last}`, user.dob.split(' ')[0], user.email, user.picture.large);
 					} else {
 						return new Manager(`${user.name.first} ${user.name.last}`, user.picture.large, this.getAccessRights());
 					}
@@ -48,11 +47,24 @@ define(['../dto/manager', '../dto/user'], function(Manager, User) {
 				return this._data;
 			});
 		}
-		delete(id) {
-			angular.copy(this._data.filter((entity) => entity.id != id), this._data);
-		}
+
 		find(id) {
 			return this._data.filter((entity) => entity.id == id)[0];
+		}
+		
+		add(model) {
+			this._data.push(model);
+		}
+
+		update(model) {
+			let entry = this._data.find(entity => entity.id == model.id);
+			if (entry) {
+				angular.copy(model, entry);
+			}
+		}
+
+		delete(id) {
+			angular.copy(this._data.filter((entity) => entity.id != id), this._data);
 		}
 	}
 

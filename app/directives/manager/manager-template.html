@@ -3,11 +3,14 @@
     <section class="card__avatar" title="{{model.name}}">
         <img ng-src="{{model.picture}}" />
     </section>
-    <section class="card__phone ellipses">Managers</section>
-    <section ng-show="model.rights.length > 0" class="card__access-rights">
+    <section class="card__phone ellipses">Manager</section>
+    <section class="card__access-rights">
         <span>Access Rights</span>
-        <ul>
-            <li ng-repeat="right in model.rights track by $index">{{right}}</li>
+        <ul ng-if="model.rights.length > 0">
+            <li ng-repeat="right in model.rights | orderBy:'+name' track by right.id">{{right.name}}</li>
+        </ul>
+        <ul ng-if="!model.rights.length">
+            <li>No rights available</li>
         </ul>
     </section>
 </div>

@@ -6,7 +6,8 @@ const directivePaths = [
 	'./sort-select/SortSelectDirective',
 	'./user/user-directive',
 	'./manager/manager-directive',
-	'./user-editor/user-editor-directive'
+	'./user-editor/user-editor-directive',
+	'./manager-editor/manager-editor-directive'
 ];
 
 define(directivePaths, function() {

@@ -9,7 +9,7 @@ define(['./user-editor-controller'], function(controller) {
 			controllerAs: 'userEditor',
 			replace: true,
             scope: {
-                model: '='
+                model: '=?'
             }
 		};
 	};

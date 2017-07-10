@@ -1,0 +1,25 @@
+<form name="form" novalidate>
+    <div class="field">
+        <label>Name</label><br/>
+        <input type="text" ng-model="slaveModel.name" required />
+    </div>
+    <div class="field">
+        <label>Rights</label>
+        <div>
+            <button class="btn-add-right" ng-click="managerEditor.addRight();">Add</button>
+            <div class="select-right-wrapper">
+                <select ng-model="selectedRight" ng-options="right.name for right in rights track by right.id"></select>
+            </div>
+            <ul class="rights-list" ng-click="managerEditor.removeRight($event)">
+                <li ng-repeat="right in slaveModel.rights track by right.id">
+                    {{right.name}}
+                    <button data-right-id="{{right.id}}">Remove</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="buttons">
+        <button ng-click="managerEditor.submit(form)">Submit</button>
+        <a href="#!/">Cancel</a>
+    </div>
+</form>

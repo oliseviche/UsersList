@@ -11,6 +11,10 @@
 				templateUrl: 'views/editor.html',
 				controller: 'EditorController'
 			})
+			.when('/user/create/', {
+				templateUrl: 'views/editor.html',
+				controller: 'EditorController'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

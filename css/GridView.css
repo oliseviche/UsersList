@@ -21,9 +21,23 @@
 	font-weight: bold;
 	margin: 10px 11px;
 }
+.grid-view__card.add-new-user {
+	background-color: rgba(64, 136, 255, 0.3);
+	height: 242px;
+	cursor:pointer;
+	transition: background-color 300ms linear;
+}
+.grid-view__card.add-new-user:hover {
+	background-color: rgba(64, 136, 255, 0.52);
+}
+.grid-view__card.add-new-user img {
+	background-image: none;
+}
 .card__avatar img {
 	width: 128px;
 	height: 128px;
+	background-image: url(https://www.vbcvit.com/upload/img/user.png);
+	background-size: contain;
 }
 .card__department {
 	margin: 5px 11px;
@@ -31,7 +45,7 @@
 .card__department--unmanaged {
 	font-weight: bold;
 }
-.card__phone {
+.card__phone, .card__dob, .card__access-rights {
 	margin: 3px 11px;
 }
 .card__access-rights {
@@ -54,6 +68,13 @@
 .card__access-rights:hover ul {
 	height: auto;
 	box-shadow: 0 0 2px #00f;
+}
+.grid-view__card .grid-view__card-editor {
+	margin: 0 5px 5px 0;
+}
+.grid-view__card .grid-view__card-editor a {
+	font-size: 9pt;
+	margin: 0 2px 0 2px;
 }
 .ellipses {
 	text-overflow: ellipsis;

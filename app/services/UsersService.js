@@ -3,7 +3,7 @@
 define(['../dao/CustomersDataSource'], function(CustomersDataSource) {
     class usersService {
         constructor() {
-            this.customersSource = new CustomersDataSource('https://randomuser.me/api/?results=50');
+            this.customersSource = new CustomersDataSource('https://randomuser.me/api/?results=10');
             this.fetchPromise = null;
         }
         data() {
@@ -19,7 +19,10 @@ define(['../dao/CustomersDataSource'], function(CustomersDataSource) {
             return this.customersSource.find(id);
         }
         update(model) {
-            debugger;
+            this.customersSource.update(model);
+        }
+        add(model) {
+            this.customersSource.add(model);
         }
     }
 

@@ -1,4 +1,10 @@
 <div class="grid-view" ng-click="grid.handleClick($event)">
+	<div class="grid-view__card add-new-user" ng-click="grid.createUser()">
+		<h1 class="ellipses">&nbsp;</h1>
+		<section class="card__avatar">
+			<img src="https://cdn4.iconfinder.com/data/icons/social-communication/142/add_user-512.png" />
+		</section>
+	</div>
 	<div class="grid-view__card" 
 		ng-repeat="user in users | filter:filter | orderBy:direction+'name' track by user.id"
 		ng-switch on="user.type">
